@@ -1,0 +1,48 @@
+﻿@model IEnumerable<OrdersApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "AllCustomers";
+}
+
+<h3>Заказчики</h3>
+
+<p>
+    <a asp-action="Create">Добавить заказчика</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Номер телефона</th>
+            <th scope="col">Электронная почта</th>
+            <th scope="col">Кол-во заказов</th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orders.Count)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

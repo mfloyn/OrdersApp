@@ -1,0 +1,60 @@
+﻿@model OrdersApp.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали</h1>
+
+<div>
+    <h4>Заказ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            Id:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+        <dt class = "col-sm-3">
+            Название:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderName)
+        </dd>
+        <dt class = "col-sm-3">
+            Дата:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class = "col-sm-3">
+            Стоимость (руб):
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class = "col-sm-3">
+            Id заказчика:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Customer!.Id)
+        </dd>
+        <dt class = "col-sm-3">
+            ФИО заказчика:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Customer!.Surename) @Html.DisplayFor(model => model.Customer!.Name) 
+        </dd>
+        <dt class = "col-sm-3">
+            Контакты заказчика:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Customer!.PhoneNumber) @Html.DisplayFor(model => model.Customer!.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.OrderId">Изменить</a> |
+    <a asp-action="AllOrders">Назад</a>
+</div>

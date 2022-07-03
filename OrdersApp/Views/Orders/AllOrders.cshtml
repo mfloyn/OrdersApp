@@ -1,0 +1,48 @@
+﻿@model IEnumerable<OrdersApp.Models.Order>
+
+@{
+    ViewData["Title"] = "AllOrders";
+}
+
+<h3>Заказы</h3>
+
+<p>
+    <a asp-action="Create">Создать заказ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Название</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Стоимость (руб)</th>
+            <th scope="col">Заказчик</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer!.Surename) @Html.DisplayFor(modelItem => item.Customer!.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

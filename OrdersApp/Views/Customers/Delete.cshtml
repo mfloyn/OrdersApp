@@ -1,0 +1,57 @@
+﻿@model OrdersApp.Models.Customer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены что хотите удалить заказчика?</h3>
+@if (Model.Orders.Count > 0)
+{
+    <h3>! Также будут удалены его заказы ! (@Model.Orders.Count шт)</h3>
+}
+
+<div>
+    <h4>Заказчик</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            Имя:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-3">
+            Фамилия:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Surename)
+        </dd>
+        <dt class = "col-sm-3">
+            Контактный номер:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-3">
+            Электронная почта:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class = "col-sm-3">
+            Кол-во заказов:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Orders.Count)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="AllCustomers">Назад</a>
+    </form>
+</div>

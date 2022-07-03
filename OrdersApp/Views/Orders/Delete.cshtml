@@ -1,0 +1,45 @@
+﻿@model OrdersApp.Models.Order
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены что хотите удалить заказ?</h3>
+<div>
+     <h4>Заказ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            Название:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderName)
+        </dd>
+        <dt class = "col-sm-3">
+            Дата:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class = "col-sm-3">
+            Стоимость (руб):
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class = "col-sm-3">
+            Заказчик:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Customer!.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrderId" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="AllOrders">Назад</a>
+    </form>
+</div>
