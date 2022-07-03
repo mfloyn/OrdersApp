@@ -27,7 +27,7 @@ namespace OrdersApp.Models
                 Id = 2,
                 Name = "Иван",
                 Surename = "Скачков",
-                PhoneNumber = "89215467895",
+                PhoneNumber = "89215467896",
                 Email = "scachkov@yandex.ru"
             };
             Customer customer3 = new()
